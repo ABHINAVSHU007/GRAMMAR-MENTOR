@@ -1,0 +1,34 @@
+.original_title{
+    background-color: orangered;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 2px;
+    display: flex;
+    justify-content: center;
+}
+
+.summary_title{
+    background-color: rgb(64, 255, 0);
+    font-size: 20px;
+    font-weight: bold;
+    padding: 2px;
+    display: flex;
+    justify-content: center;
+}
+
+.srt{
+    display: flex;
+    flex-direction: row;
+}
+
+.original_text{
+    background-color: orangered;
+    padding: 20px;
+
+}
+
+.summary_text{
+    background-color: greenyellow;
+    padding: 20px;
+    margin: 10px;
+}
