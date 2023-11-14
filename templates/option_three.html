@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Text Summarizer</title>
+
+
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/fontawesome.css">
+    <link rel="stylesheet" href="/static/css/option_three.css">
+    <link rel="stylesheet" href="/static/css/animated.css">
+    <link rel="stylesheet" href="/static/css/owl.css">
+
+
+
+</head>
+
+<body>
+
+
+    <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <div class="logo"><a href="http://127.0.0.1:5000/"><img src="/static/images/LOGO.png"
+                                    height="70" alt=""></a></div>
+
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="#top">Home</a></li>
+                        </ul>
+
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <br>
+        <h1><b>TEXT SUMMARIZER</b></h1><br>
+        <p style="color: black;"> <b>Enter the text below:</b></p>
+        <textarea id="inputText" rows="5" cols="100"></textarea>
+        <br><br><br>
+        <button class="button-85" onclick="summarizeText()" >Submit</button>
+        <br><br>
+        <h2>Summary:</h2>
+        <p id="summaryText"></p>
+    </main>
+    <script style="color: black;">
+        function summarizeText() {
+            var inputText = document.getElementById("inputText").value;
+
+            fetch('/summarize', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ text: inputText })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("summaryText").innerText = data.summary;
+                });
+        }
+    </script>
+</body>
+
+</html>

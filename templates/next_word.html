@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Prediction</title>
+</head>
+<body>
+    <h1>Model Prediction</h1>
+    <form id="prediction-form">
+        <label for="input-data">Input Data:</label>
+        <input type="text" id="input-data" name="input-data" required>
+        <button type="submit"><a href="/predict">Predict</a></button>
+        
+    </form>
+    <p><strong>Predicted Output:</strong> <span id="output"></span></p>
+
+    <script>
+        document.getElementById("prediction-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const inputData = document.getElementById("input-data").value;
+            fetch("/predict", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ "input_data": inputData }),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    const outputElement = document.getElementById("output");
+                    outputElement.textContent = data.predictions;
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        });
+    </script>
+</body>
+</html>

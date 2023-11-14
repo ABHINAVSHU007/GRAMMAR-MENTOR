@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <title>GRAMMAR-MENTOR</title>
+    <link rel="stylesheet" href="static/css/WORD.CSS">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.css">
+    <link rel="stylesheet" href="static/css/animated.css">
+    <link rel="stylesheet" href="static/css/owl.css">
+
+</head>
+<body> 
+
+
+
+    <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <a href="http://127.0.0.1:5000/" class="logo">
+                            <img src="/static/images/LOGO.png" alt="">
+                        </a>
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="#top" class="active">SPELLING CORRECTION</a></li>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <main class="main">
+        <br><br><br>
+        <div class="box">
+            <h1 style="color: rgb(255, 255, 255);text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;"> <b>SPELLING CORRECTION</b></h1>
+            <br><br>
+            <input type="text" id="inputWord" placeholder="Enter a word"><br><br>
+            <button id="checkButton" class="button-85">CHECK SPELLING</button> <br> <br>
+            <div id="results"></div>
+            <br> <br>
+
+
+
+
+            <script style="color: black; font-size:larger ">
+                document.getElementById('checkButton').addEventListener('click', function () {
+                    let word = document.getElementById('inputWord').value;
+                    fetch('/check_spelling', {
+                        method: 'POST',
+                        body: JSON.stringify({ word: word }),
+                        headers: { 'Content-Type': 'application/json' }
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            let resultsDiv = document.getElementById('results');
+                            resultsDiv.innerHTML = '';
+                            if (data.corrections.length === 0) {
+                                resultsDiv.innerHTML = 'No suggestions found.';
+                            } else {
+                                data.corrections.forEach(correction => {
+                                    resultsDiv.innerHTML += correction + '<br>';
+                                });
+                            }
+                        });
+                });
+            </script>
+        </div>
+    </main>
+
+
+
+</body>
+
+</html>

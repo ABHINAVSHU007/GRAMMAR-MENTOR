@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Text Prediction</title>
+
+
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/fontawesome.css">
+    <link rel="stylesheet" href="/static/css/first.css">
+    <link rel="stylesheet" href="/static/css/animated.css">
+    <link rel="stylesheet" href="/static/css/owl.css">
+
+
+
+</head>
+
+<body>
+
+
+    <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <div class="logo"><a href="http://127.0.0.1:5000/"><img src="/static/images/LOGO.png"
+                                    height="70" alt=""></a></div>
+
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="#top">Home</a></li>
+                            
+                        </ul>
+
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+
+        <br>
+        <h1><b>NEXT WORD PREDICTION</b></h1>
+        <form method="POST">
+            <br>
+            <p style="color: black; font-size:larger ">Enter your input text:</p>
+            <br>
+            <textarea for="input_text" rows="5" cols="100" type="text" name="input_text" id="input_text"></textarea>
+            <br><br><br><br>
+            <button class="button-85" type="submit">PREDICT</button>
+            <br><br>
+        </form>
+        {% if prediction %}
+        <p style="color: black; font-size:larger "><strong >Input Text: </strong> {{ input_text }}</p>
+        <p>---------------------------------------------------</p>
+        <br>
+        <p style="color: black; font-size:larger "><strong >Predicted Text: </strong> {{ prediction }}</p>
+        {% endif %}
+
+    </main>
+</body>
+
+</html>
