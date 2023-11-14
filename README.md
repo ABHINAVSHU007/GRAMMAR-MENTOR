@@ -17,16 +17,16 @@ how to run these files :-
 
 **
 
-pip install nltk
-pip install flask
-pip install transformers
-pip install spacy
-pip install string
-pip install heapq
-pip install re
-pip install pickle
-pip install tensorflow
-pip install keras
+pip install nltk ,
+pip install flask ,
+pip install transformers ,
+pip install spacy ,
+pip install string ,
+pip install heapq ,
+pip install re ,
+pip install pickle ,
+pip install tensorflow ,
+pip install keras ,
 
 **
 
