@@ -1,0 +1,4 @@
+[[redirects]]
+from = "/*
+to = "/app.py"
+status = 200
